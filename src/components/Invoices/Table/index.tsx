@@ -221,6 +221,7 @@ type TInvoicesTableProps= {
 
 const InvoicesTable = ({invoices}: TInvoicesTableProps)=> {
     const dispatch = useDispatch()
+    const token = useSelector<IState, IState["token"]>((state) => state.token)
     const [openModal, setOpenModal] = useState(false)
     const [modalData, setModalData] = useState<IInvoice | null>(null)
 
@@ -297,7 +298,7 @@ const InvoicesTable = ({invoices}: TInvoicesTableProps)=> {
     );
 
     const fetchInvoices = async () => {
-        const invoices = await getInvoices()
+        const invoices = await getInvoices(token)
         dispatch({type: "ADD_INVOICES", payload: {invoices}})
     }
 

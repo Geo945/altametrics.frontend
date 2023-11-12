@@ -22,7 +22,7 @@ const errorHandler = (error: any) => {
 
 const requestHandler = async (request: any) => {
     try {
-        // add token
+        // add headers
         return request;
     } catch (error) {
         throw new Error('Cannot add headers');
